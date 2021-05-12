@@ -1,0 +1,88 @@
+<%- include("_header") -%>
+
+  <h2> Calculate Sum of a Series</h2>
+
+
+  <!-- Not using bootstrap, just a simple form that you may enhance -->
+  <form action="/sumofseries" method="POST">
+    <table>
+      <tr>
+        <td><label for="startnumber">Enter Starting Number</label>:</td>
+        <td><input type="number" name="startnumber" id="startnumber" required /></td>
+        <td>(required)</td>
+      </tr>
+      <tr>
+        <td><label for="endnumber">Enter Ending Number</label>:</td>
+        <td><input type="number" name="endnumber" id="endnumber" required /></td>
+        <td>(required)</td>
+      </tr>
+      <tr>
+        <td><label for="increment">Enter Increment</label>:</td>
+        <td><input type="text" name="increment" id="increment" required /></td>
+        <td>(required)</td>
+      </tr>
+
+      <tr>
+        <td span="2">
+          <input type="submit" value="Calculate Sum" />
+          <input type="reset" value="Reset" />
+        </td>
+      </tr>
+    </table>
+  </form>
+
+  <p id="result"></p>
+
+  <%- include("_footer") -%>
+
+    <script>
+
+      function sumofincrements(startNumber, endNumber, increment) {
+
+        let sumofSeries = 0;
+        let newIncrement = increment;
+
+        for (let i = startNumber; i <= endNumber; i += increment) {
+          sumofSeries += i
+
+        }
+        return `The sum of the numbers from ${startNumber} to ${endNumber} increamented by ${increment} is ${sumofSeries}`
+      }
+
+      // Handle form submission
+      document.querySelector("form").addEventListener("submit", e => {
+        // Cancel default behavior of sending a synchronous POST request
+        e.preventDefault();
+        // Create a FormData object, passing the form as a parameter
+        const formData = new FormData(e.target);
+        console.log(e.target.elements.startnumber.value);
+
+        const startElement = parseInt(e.target.elements.startnumber.value);
+        const endElement = parseInt(e.target.elements.endnumber.value);
+        const incrementElement = parseInt(e.target.elements.increment.value);
+
+        console.log(startElement);
+        console.log(endElement);
+        console.log(incrementElement);
+
+        if (startElement >= endElement) {
+
+          showResult = document.getElementById("result");
+          userValue = document.createElement("p");
+          userValue.innerText = "Ending number must be greater than starting number";
+          showResult.appendChild(userValue)
+
+        }
+        else {
+          result = sumofincrements(startElement, endElement, incrementElement)
+
+          console.log(result);
+
+          showResult = document.getElementById("result");
+          userValue = document.createElement("p");
+          userValue.innerText = result;
+          showResult.appendChild(userValue)
+        }
+
+      });
+    </script>

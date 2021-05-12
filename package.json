@@ -1,0 +1,27 @@
+{
+  "name": "spring2021kimurais645final",
+  "version": "1.0.0",
+  "description": "Spring 2021 IS645 Final",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/takeokimura2/Spring2021KimuraIS645Final.git"
+  },
+  "author": "Takeo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/takeokimura2/Spring2021KimuraIS645Final/issues"
+  },
+  "homepage": "https://github.com/takeokimura2/Spring2021KimuraIS645Final#readme",
+  "dependencies": {
+    "dotenv": "^9.0.2",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "multer": "^1.4.2",
+    "pg": "^8.6.0"
+  }
+}
